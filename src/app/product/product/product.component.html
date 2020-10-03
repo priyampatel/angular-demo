@@ -1,0 +1,30 @@
+<kendo-grid [kendoGridBinding]="gridView" [sortable]="true" [kendoGridExpandDetailsBy]="expandDetailsBy"
+    [(expandedDetailKeys)]="expandedDetailKeys"> 
+    <ng-template kendoGridToolbarTemplate>
+        <button kendoGridAddCommand type="button" (click)="openCategoryDialog()">Add New Category</button>
+        <button kendoGridAddCommand type="button" (click)="openDialog('','Add')">Add New Product</button>
+    </ng-template>
+    <kendo-grid-column field="CategoryID" title="ID" [width]="50"></kendo-grid-column>
+
+    <kendo-grid-column field="CategoryName" title="Category Name" [width]="200"></kendo-grid-column>
+    <kendo-grid-column field="Description" title="Description" [width]="300"></kendo-grid-column>
+    
+
+    <ng-template kendoGridDetailTemplate let-dataItem>
+        <kendo-grid [kendoGridBinding]="dataItem.Products" [sortable]="true">
+            <kendo-grid-column field="ProductID" title="ID" [width]="50"></kendo-grid-column>
+
+            <kendo-grid-column field="ProductName" title="Product Name" [width]="70"></kendo-grid-column>
+            <kendo-grid-column field="UnitPrice" title="Unit Price" [width]="50" format="{0:c}"></kendo-grid-column>
+
+            <kendo-grid-command-column title="Command" width="50">
+                <ng-template kendoGridCellTemplate let-isNew="isNew">
+                    <button kendoGridEditCommand type="button" [primary]="true" (click)="openDialog(dataItem.Products,'Update')">Edit</button>
+                    <button kendoGridRemoveCommand type="button" (click)="openDeleteDialog(dataItem.Products)">Remove</button>
+                    </ng-template>
+            </kendo-grid-command-column>
+         
+        </kendo-grid>
+
+    </ng-template>
+</kendo-grid>

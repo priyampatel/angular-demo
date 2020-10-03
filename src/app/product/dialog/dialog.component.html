@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>{{data.commandType}} Product Detail</h1>
+<div mat-dialog-content>
+    <mat-form-field class="example-full-width">
+        <mat-label>Product Name</mat-label>
+        <input matInput value="" [(ngModel)]="prdDtl.ProductName">
+    </mat-form-field>
+
+    
+    <mat-form-field class="example-full-width">
+        <mat-label> Unit Price
+        </mat-label>
+        <input matInput value="" [(ngModel)]="prdDtl.UnitPrice">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label> Units In Stock
+        </mat-label>
+        <input matInput value="" [(ngModel)]="prdDtl.UnitsInStock">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label> Units On Order
+        </mat-label>
+        <input matInput value="" [(ngModel)]="prdDtl.UnitsOnOrder">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label> Category
+        </mat-label>
+        <mat-select [(ngModel)]="prdDtl.CategoryID">
+            <mat-option *ngFor="let c of api.AllCategory" [value]="c.CategoryID">
+              {{c.CategoryName}}
+            </mat-option>
+          </mat-select>
+        
+    </mat-form-field>
+   
+</div>
+<div mat-dialog-actions>
+    <!-- <button mat-raised-button (click)="putData()">Reset</button>
+        <button mat-raised-button color="primary" (click)="postData()">Save</button>
+        <button mat-raised-button color="warn" (click)="deleteData()">Delete</button> -->
+    <div class="example-button">
+        <button mat-raised-button (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="AddProduct(prdDtl,data)"> {{data.commandType}} </button>
+    </div>
+</div>

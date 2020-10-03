@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Add Category </h1>
+<div mat-dialog-content>
+  
+    <mat-form-field class="example-full-width">
+        <mat-label>Category Name</mat-label>
+        <input matInput value="" [(ngModel)]="catDtl.CategoryName">
+    </mat-form-field>
+
+    
+    <mat-form-field class="example-full-width">
+        <mat-label> Description
+        </mat-label>
+        <input matInput value="" [(ngModel)]="catDtl.Description">
+    </mat-form-field>
+  
+   
+</div>
+<div mat-dialog-actions>
+    <!-- <button mat-raised-button (click)="putData()">Reset</button>
+        <button mat-raised-button color="primary" (click)="postData()">Save</button>
+        <button mat-raised-button color="warn" (click)="deleteData()">Delete</button> -->
+    <div class="example-button">
+        <button mat-raised-button (click)="onNoClick()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="AddCategory(catDtl)"> Add </button>
+    </div>
+</div>

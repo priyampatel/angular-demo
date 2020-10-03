@@ -12,9 +12,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build process
 
-Clone or download the repo and run following commands 
-npm install
-npm start 
+Clone or download the repo  
+Run `npm install`
+Run `npm start` 
 
 ## Making requests to the backend API
 

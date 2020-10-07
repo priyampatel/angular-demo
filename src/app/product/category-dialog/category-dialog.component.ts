@@ -17,12 +17,12 @@ export class CategoryDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('close');
   }
   AddCategory(catDtl){
     this.api.postData("Categories", catDtl).subscribe(res => {
       if(res){
-        this.dialogRef.close();
+        this.dialogRef.close(res);
 
       }
     })

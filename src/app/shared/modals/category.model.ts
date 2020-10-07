@@ -4,5 +4,5 @@ export class Category {
     CategoryID?:number;
     CategoryName:string;
     Description?:string;
-    Products:Product;
+    Products:any;
 }

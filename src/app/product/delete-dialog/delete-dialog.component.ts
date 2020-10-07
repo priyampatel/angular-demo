@@ -17,12 +17,12 @@ export class DeleteDialogComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('close');
   }
   deleteData(){
-    this.api.deleteData("Products"+ "/"+this.data[0].ProductID).subscribe(res =>{
+    this.api.deleteData("Products"+ "/"+this.data.ProductID).subscribe(res =>{
       if(res){
-        this.dialogRef.close();
+        this.dialogRef.close(res);
       }
     })
   }

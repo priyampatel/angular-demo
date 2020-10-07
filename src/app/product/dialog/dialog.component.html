@@ -25,7 +25,7 @@
         <mat-label> Category
         </mat-label>
         <mat-select [(ngModel)]="prdDtl.CategoryID">
-            <mat-option *ngFor="let c of api.AllCategory" [value]="c.CategoryID">
+            <mat-option *ngFor="let c of this.api.AllCategory" [value]="c.CategoryID">
               {{c.CategoryName}}
             </mat-option>
           </mat-select>

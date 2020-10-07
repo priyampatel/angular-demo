@@ -15,29 +15,33 @@ export class DialogComponent implements OnInit {
     public data) {}
 
   ngOnInit() {
-    if(this.data.commandType == "Update"){
-      this.prdDtl.ProductID=this.data.productdata[0].ProductID;
-      this.prdDtl.UnitPrice=this.data.productdata[0].UnitPrice;
-      this.prdDtl.UnitsInStock=this.data.productdata[0].UnitsInStock;
-      this.prdDtl.ProductName=this.data.productdata[0].ProductName;
-      this.prdDtl.UnitsOnOrder=this.data.productdata[0].UnitsOnOrder;
-      this.prdDtl.CategoryID=this.data.productdata[0].CategoryID;
+    if(this.data.commandType == "edit"){
+      this.prdDtl.ProductID=this.data.data.ProductID;
+      this.prdDtl.UnitPrice=this.data.data.UnitPrice;
+      this.prdDtl.UnitsInStock=this.data.data.UnitsInStock;
+      this.prdDtl.ProductName=this.data.data.ProductName;
+      this.prdDtl.UnitsOnOrder=this.data.data.UnitsOnOrder;
+      this.prdDtl.CategoryID=this.data.data.CategoryID;
+    }
+    if(this.data.commandType == 'edit'){
+      this.data.commandType='Update'
     }
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('close');
   }
   AddProduct(prdDtl,data){
     if(data.commandType == "Add"){
+      
       this.api.postData("Products", prdDtl).subscribe(res => {
         if(res){
-          this.dialogRef.close(prdDtl);
+          this.dialogRef.close([res,'Add']);
         }
       })
     } else if(data.commandType == "Update"){
       this.api.putData("Products"+"/"+this.prdDtl.ProductID,prdDtl).subscribe(res => {
-        this.dialogRef.close(prdDtl);
+        this.dialogRef.close([prdDtl,'Update']);
       })
     }
     

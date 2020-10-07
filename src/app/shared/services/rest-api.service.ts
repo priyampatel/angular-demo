@@ -11,6 +11,7 @@ import { Category } from '../modals/category.model';
 export class RestApiService {
   hostUrl: string = environment.serverUrl;
   AllCategory=new BehaviorSubject<Category[]>([]);
+  AllCategory$ = this.AllCategory.asObservable();
 
   constructor(public http: HttpClient) { }
 
